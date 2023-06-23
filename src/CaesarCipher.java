@@ -5,7 +5,7 @@ import java.io.IOException;
 
 public class CaesarCipher {
     static String alphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя.,””:-!? ";
-    private static int step = 5;
+
 
     public static String convertLetter(String letter) { // конвертируем букву
         String converted = letter; //
@@ -13,7 +13,7 @@ public class CaesarCipher {
         int index = alphabet.indexOf(letter.toLowerCase()); //
 
         if (index >= 0) { //
-            index = index + step; //
+            index = index + Menu.key; //
             if (index > alphabet.length()) { //
                 index = index - alphabet.length(); //
             }
