@@ -4,6 +4,11 @@ public class CaesarCipher {
 
     static String alphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя.,”:-!? ";
 
+    /**
+     *
+     * @param letter конвертирует символ из алфавита
+     * @return зашифрованный символ
+     */
     public static String encodingLetter(String letter) { // конвертируем букву
         String converted = letter; //
 
@@ -19,11 +24,22 @@ public class CaesarCipher {
         return converted; //
     }
 
+    /**
+     *
+     * @param letter зашифрованный символ
+     * @return дешифрованный символ
+     */
     public static String decodingLetter(String letter)
     {
         return decodingLetterByStep(letter, key);
     }
 
+    /**
+     * расшифровывает символ по указанному ключу
+     * @param letter зашифрованный символ
+     * @param step ключ шифрования
+     * @return расшифрованный символ
+     */
     public static String decodingLetterByStep(String letter, int step) { // расшифровываем ( бувка, шаг)
 
         String converted = letter; //объявляем переменную и присваиваем букву

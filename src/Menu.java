@@ -2,7 +2,9 @@ import java.nio.file.Path;
 import java.util.Scanner;
 
 public class Menu {
-
+    /**
+     * вызов меню
+     */
     public static void start() {
 
         Scanner sc = new Scanner(System.in);
@@ -24,6 +26,9 @@ public class Menu {
 
     }
 
+    /**
+     * вызов шифра цезаря
+     */
     public static void startCaesar() {
 
         System.out.println("Запуск работы с шифром Цезаря.");
@@ -47,6 +52,9 @@ public class Menu {
         reader.decoding();
     }
 
+    /**
+     * вызов брутфорс
+     */
     public static void startBrutForce() {
         System.out.println("Запуск работы криптоанализа методом brute force.");
         Scanner sc = new Scanner(System.in);

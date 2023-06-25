@@ -8,12 +8,21 @@ public class HacerBrutForce {
     String pathEncodingFile;
     String pathDecodingFile;
 
+    /**
+     * конструктор
+     * @param pathOriginalFile оригинальный путь к файлу
+     * @param pathEncodingFile зашифрованный путь к файлу
+     * @param pathDecodingFile расшифрованный путь к файлу
+     */
     public HacerBrutForce(String pathOriginalFile, String pathEncodingFile, String pathDecodingFile) {
         this.pathOriginalFile = pathOriginalFile;
         this.pathEncodingFile = pathEncodingFile;
         this.pathDecodingFile = pathDecodingFile;
     }
 
+    /**
+     * расшифровывыет текст путем подбора ключа
+     */
     public void deciphered() {
         String origFirstLetter = "";
         try {
