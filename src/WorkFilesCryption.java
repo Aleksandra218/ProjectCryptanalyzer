@@ -6,8 +6,6 @@ public class WorkFilesCryption {
     public static String pathEncodingFile;
     public static String pathDecodingFile;
 
-    private char origFirstLetter;
-    private char decipheredFirstLetter;
 
     public void encryption() {
 
@@ -52,9 +50,7 @@ public class WorkFilesCryption {
         } else {
             return fileName;
         }
-
     }
-
 }
 
 

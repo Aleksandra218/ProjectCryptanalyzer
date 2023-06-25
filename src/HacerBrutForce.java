@@ -15,6 +15,15 @@ public class HacerBrutForce {
     }
 
     public void deciphered() {
+        String origFirstLetter = "";
+        try {
+            var file1 = new FileReader(pathOriginalFile);
+            char letter = (char) file1.read();
+            origFirstLetter = String.valueOf(letter);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         boolean decodeCompleted = true;
         int brutforceStep = 1;
         while (decodeCompleted) {
@@ -30,14 +39,10 @@ public class HacerBrutForce {
                     writer.write(encrypt);
                 }
 
-                var file1 = new FileReader(pathOriginalFile);
-                var origFirstLetter = (char) file1.read();
-
                 var decipheredText = new FileReader(pathDecodingFile);
                 var decipheredFirstLetter = (char) decipheredText.read();
 
-
-                if (String.valueOf(origFirstLetter).equalsIgnoreCase(String.valueOf(decipheredFirstLetter))) {
+                if (origFirstLetter.equalsIgnoreCase(String.valueOf(decipheredFirstLetter))) {
                     decodeCompleted = false;
                     System.out.println("Найденный ключ=" + brutforceStep);
                 }
