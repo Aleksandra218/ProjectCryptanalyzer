@@ -1,20 +1,52 @@
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class HacerBrutForce {
 
-    static String decoding(String letter, int step) { // расшифровываем ( бувка, шаг)
+    String pathOriginalFile;
+    String pathEncodingFile;
+    String pathDecodingFile;
 
-        String converted = letter; //объявляем переменную и присваиваем букву
+    public HacerBrutForce(String pathOriginalFile, String pathEncodingFile, String pathDecodingFile) {
+        this.pathOriginalFile = pathOriginalFile;
+        this.pathEncodingFile = pathEncodingFile;
+        this.pathDecodingFile = pathDecodingFile;
+    }
 
-        int index = CaesarCipher.alphabet.indexOf(letter); // обявляем переменную индекс и присваем позицию буквы в алфавите
+    public void deciphered() {
+        boolean decodeCompleted = true;
+        int brutforceStep = 1;
+        while (decodeCompleted) {
+            try (FileReader reader = new FileReader(pathEncodingFile);
+                 FileWriter writer = new FileWriter(pathDecodingFile)) {
 
-        if (index >= 0) { //если индекс больше/равно нуля
-            index = index - step; // из позиции вычитаем шаг 33-5
 
-            if (index < 0) { // индекс меньше нуля
-                index = index + CaesarCipher.alphabet.length(); // в индекс записываем индекс плюс длина алфавита
+                while (reader.ready()) {
+                    char symbol = (char) reader.read();
+
+
+                    String encrypt = CaesarCipher.decodingLetterByStep(String.valueOf(symbol), brutforceStep);
+                    writer.write(encrypt);
+                }
+
+                var file1 = new FileReader(pathOriginalFile);
+                var origFirstLetter = (char) file1.read();
+
+                var decipheredText = new FileReader(pathDecodingFile);
+                var decipheredFirstLetter = (char) decipheredText.read();
+
+
+                if (String.valueOf(origFirstLetter).equalsIgnoreCase(String.valueOf(decipheredFirstLetter))) {
+                    decodeCompleted = false;
+                    System.out.println("Найденный ключ=" + brutforceStep);
+                }
+
+                brutforceStep++;
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
-
-            converted = String.valueOf(CaesarCipher.alphabet.charAt(index)); // конверуем букву
         }
-        return converted;
-   }
+    }
 }
